@@ -1,0 +1,67 @@
+{
+	"manifest_version": 2,
+	"name": "Custom Input Everywhere",
+	"version": "1.0",
+	"description": "Adds a floating input box overlay with AI capabilities",
+	"permissions": [
+		"activeTab",
+		"storage",
+		"contextMenus",
+		"https://api.openai.com/*",
+		"<all_urls>"
+	],
+
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"js": ["content.js"],
+			"css": ["styles.css"]
+		}
+	],
+
+	"browser_action": {
+		"default_title": "Custom Input Box",
+		"default_popup": "popup.html"
+	},
+
+	"commands": {
+		"toggle-habit-mode": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+H",
+				"mac": "Command+Shift+H"
+			},
+			"description": "Toggle Habit Mode"
+		},
+		"toggle-advanced-mode": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+A",
+				"mac": "Command+Shift+A"
+			},
+			"description": "Toggle Advanced Mode"
+		},
+		"toggle-extension": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+E",
+				"mac": "Command+Shift+E"
+			},
+			"description": "Toggle Extension On/Off"
+		},
+		"open-advanced-overlay": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+Y",
+				"mac": "Command+Shift+Y"
+			},
+			"description": "Open Advanced Mode Overlay (AI popup)"
+		}
+	},
+
+	"icons": {
+		"48": "icon48.png",
+		"128": "icon128.png"
+	}
+}
